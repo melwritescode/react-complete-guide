@@ -22,3 +22,11 @@
 .button:hover {
   background-color: lightgreen;
 }
+
+.button.red {
+  background-color: red;
+}
+
+.button.red:hover {
+  background-color: salmon;
+}
