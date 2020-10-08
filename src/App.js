@@ -1,6 +1,19 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import './App.css';
 import Person from './Person/Person';
+
+// const StyledButton = styled.button`
+//   background-color: ${(props) => (props.altStyle ? 'red' : 'green')};
+//   color: black;
+//   font: inherit;
+//   border: 1px solid green;
+//   padding: 8px;
+//   cursor: pointer;
+//   &:hover {
+//     background-color: ${(props) => (props.altStyle ? 'salmon' : 'lightgreen')};
+//   },
+// `;
 
 class App extends Component {
   state = {
@@ -48,15 +61,18 @@ class App extends Component {
   };
 
   render() {
-    const style = {
-      backgroundColor: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer',
-    };
-
     const { persons } = this.state;
+    // const style = {
+    //   backgroundColor: 'green',
+    //   color: 'black',
+    //   font: 'inherit',
+    //   border: '1px solid green',
+    //   padding: '8px',
+    //   cursor: 'pointer',
+    //   ':hover': {
+    //     backgroundColor: 'lightgreen',
+    //   },
+    // };
 
     let personsList = null;
 
@@ -76,11 +92,36 @@ class App extends Component {
           })}
         </div>
       );
+
+      // style = {
+      //   ...style,
+      //   backgroundColor: 'red',
+      //   border: '1px solid red',
+      //   [':hover']: {
+      //     backgroundColor: 'salmon',
+      //   },
+      // };
+
+      // style.backgroundColor = 'red';
+      // style.border = '1px solid red';
+      // style[':hover'] = {
+      //   backgroundColor: 'salmon',
+      // };
     }
+
+    const classes = [];
+    if (persons.length <= 2) {
+      classes.push('red');
+    }
+    if (persons.length <= 1) {
+      classes.push('bold');
+    }
+
     return (
       <div className="App">
         <h1>Hi, I'm a React App</h1>
-        <button style={style} onClick={this.handleTogglePersons}>
+        <p className={classes.join(' ')}>This is working!</p>
+        <button className={'button'} onClick={this.handleTogglePersons}>
           Toggle Persons
         </button>
         {personsList}
