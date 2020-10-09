@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classes from './App.css';
 import './App.css';
-import Person from './Person/Person';
+import Person from '../components/Person/Person';
 
 // const StyledButton = styled.button`
 //   background-color: ${(props) => (props.altStyle ? 'red' : 'green')};
