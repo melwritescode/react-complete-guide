@@ -3,18 +3,6 @@ import classes from './App.css';
 import './App.css';
 import Person from '../components/Person/Person';
 
-// const StyledButton = styled.button`
-//   background-color: ${(props) => (props.altStyle ? 'red' : 'green')};
-//   color: black;
-//   font: inherit;
-//   border: 1px solid green;
-//   padding: 8px;
-//   cursor: pointer;
-//   &:hover {
-//     background-color: ${(props) => (props.altStyle ? 'salmon' : 'lightgreen')};
-//   },
-// `;
-
 class App extends Component {
   state = {
     persons: [
@@ -37,7 +25,6 @@ class App extends Component {
 
   handleChangeName = (e, idx) => {
     /**Make a copy of the selected person and change their name */
-
     const personIdx = this.state.persons.findIndex((p, pIdx) => pIdx === idx); // Select the idx person from this array whose idx, matches the idx that was passed to us from the click event
     const person = { ...this.state.persons[personIdx] }; // Use personIdx to find the actual element (person obj) from the state, make a copy of that obj to mutate
     person.name = e.target.value; // change the name of that person, to whatever input we receive from the text input
@@ -45,7 +32,6 @@ class App extends Component {
     /** Make a copy of the persons state. Find the target of the event, swap them out with the newly updated person */
     const persons = [...this.state.persons]; // Make a copy of the persons state to mutate
     persons[personIdx] = person; // Use personIdx to select the person (event target) from the persons array, update that person to the newly updated person with the changed name property
-
     this.setState({ persons: persons }); // Set the state with the updated persons array that contains the newly updated person
   };
 
@@ -63,18 +49,6 @@ class App extends Component {
   render() {
     const { persons } = this.state;
     const btnClass = [classes.button];
-    // const style = {
-    //   backgroundColor: 'green',
-    //   color: 'black',
-    //   font: 'inherit',
-    //   border: '1px solid green',
-    //   padding: '8px',
-    //   cursor: 'pointer',
-    //   ':hover': {
-    //     backgroundColor: 'lightgreen',
-    //   },
-    // };
-
     let personsList = null;
 
     if (this.state.showPersons) {
@@ -95,21 +69,6 @@ class App extends Component {
       );
 
       btnClass.push(classes.red);
-
-      // style = {
-      //   ...style,
-      //   backgroundColor: 'red',
-      //   border: '1px solid red',
-      //   [':hover']: {
-      //     backgroundColor: 'salmon',
-      //   },
-      // };
-
-      // style.backgroundColor = 'red';
-      // style.border = '1px solid red';
-      // style[':hover'] = {
-      //   backgroundColor: 'salmon',
-      // };
     }
 
     const assignedClasses = [];
