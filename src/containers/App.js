@@ -3,6 +3,8 @@ import classes from './App.css';
 import './App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
+import withClass from '../hoc/withClass';
+import Aux from '../hoc/Aux';
 
 class App extends Component {
   state = {
@@ -60,7 +62,7 @@ class App extends Component {
       );
     }
     return (
-      <div className={classes.App}>
+      <Aux classes={classes.App}>
         <Cockpit
           title={this.props.appTitle}
           showPersons={this.state.showPersons}
@@ -68,9 +70,9 @@ class App extends Component {
           togglePersons={this.handleTogglePersons}
         />
         {personsList}
-      </div>
+      </Aux>
     );
   }
 }
 
-export default App;
+export default withClass(App, classes.App);
